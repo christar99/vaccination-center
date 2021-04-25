@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="title">코로나19 예방접종센터</h1>
-    <h3 id="subheading">covid-19 vaccination center</h3>
-    <form action="map.html" method="GET">
-        <input type="text" class="searchLocation" placeholder="검색할 장소를 적어주세요"/><br>
-        <button class="searchButton"><img src="searchButton.PNG"></button>
-        <button class="currentLocation">현재위치로 <br>검색</button>
-    </form>
+    <div class="searchWrap">
+        <h1 id="title">코로나19 예방접종센터</h1>
+        <h3 id="subheading">covid-19 vaccination center</h3>
+        <form method="GET">
+            <input type="text" class="searchLocation" placeholder="검색할 장소를 적어주세요"/><br>
+            <button class="searchButton"><img src="searchButton.PNG"></button>
+            <button class="currentLocation">현재위치로 <br>검색</button>
+        </form>
+    </div>
+
+    <div id="map"></div>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fe6dupkkuv"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fe6dupkkuv&submodules=geocoder"></script>
+    <script src="main.js"></script>
 </body>
 </html>

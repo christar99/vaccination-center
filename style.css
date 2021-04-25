@@ -2,13 +2,20 @@
     margin: 0;
     padding: 0;
 }
+html, body {
+    width: 100%;
+    height: 100%;
+}
 
-body {
+
+.searchWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3b5998;
     color: #ddd;
+    width: 100%;
+    height: 100%;
+    background-color: #3b5998;
 }
 
 #title {
@@ -66,4 +73,11 @@ form {
 
 .currentLocation:hover {
     cursor: pointer;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
 }

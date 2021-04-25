@@ -51,3 +51,16 @@ function eventHandle(e) {
 let mapOptions = {zoom: 15};
 // 맵 생성
 let map = new naver.maps.Map('map', mapOptions);
+
+
+const url = "https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=204&" + 
+    "serviceKey=gNWiWkY9fyJ3dGm%2FIwxImL9MOl930bOHlSItvNS%2BPPZVQZuouadlFyn5sLYy9HEFkGLcEanPhYPDM8uN9f6j1w%3D%3D";
+
+async function getCenterList() {
+    let response = await fetch(url);
+    if(response.ok){
+        return await response.json(); 
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
+}

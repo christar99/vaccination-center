@@ -109,8 +109,20 @@ form {
     position: absolute;
     color: #fff;
     letter-spacing: -1px;
-    
+    font-size: 0.8rem;
 }
+
+.infoWindow{
+    padding: 10px;
+    font-size: 1.3rem;
+}
+.infoWindow>.org{
+    font-size: 1rem;
+}
+.address{
+    font-size: 0.8rem;
+}
+
 
 
 #map {

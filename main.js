@@ -70,6 +70,7 @@ let mapOptions = {zoom: 13};
 // 맵 생성
 let map = new naver.maps.Map('map', mapOptions);
 let markerList = [];
+let infoWindowList = [];
 
 
 
@@ -84,22 +85,85 @@ async function getCenterList() {
 }
 
 
-
+// 맵상의 인포윈도우와 마커를 제작하는 함수
 function createMarker(data){
     data.forEach(element => {
         let marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(element.lng, element.lat),
             map: map,
             icon: {
-                url: "syringe1.png",
+                url: "syringe.png",
                 origin: new naver.maps.Point(0, 0),
                 anchor: new naver.maps.Point(11, 35)
             }
-        })
+        });
+        let infowindow = new naver.maps.InfoWindow({
+            content: `<div class="infoWindow"><b>${element.centerName}</b>`
+            + `<br><span class="org">${element.org}<span>` 
+            + `<br><hr><span class="address"> ${element.address} <span> `
+            + `<br><span class="address">${element.facilityName}<span></div>`,
+    
+            backgroundColor: "#eee",
+            borderColor: "cadetblue",
+            borderWidth: 2,
+            anchorSize: new naver.maps.Size(30, 10),
+            anchorColor: "#eee",
+            pixelOffset: new naver.maps.Point(50, -10)
+        });
+
+
         markerList.push(marker);
-    })
-    console.log(markerList);
+        infoWindowList.push(infowindow);
+    });
+    markerList.forEach((element, index) => {
+        naver.maps.Event.addListener(element, "click", getClickHandler(markerList, infoWindowList, index));
+    });
+}
+
+
+
+
+// 마커클릭시 인포윈도우창 띄우기
+function getClickHandler(markerList, infoWindowList, seq) {
+    return function(e) {
+        let marker = markerList[seq],
+            infoWindow = infoWindowList[seq];
+
+            if(infoWindow.getMap()) infoWindow.close();
+            else infoWindow.open(map, marker);
+    }
 }
 
 getCenterList();
+
+// function createMarker(element) {
+//     console.log(element[0]);
+//     let marker = new naver.maps.Marker({
+//         position: new naver.maps.LatLng(element[0].lng, element[0].lat),
+//         map: map,
+//         icon: {
+//             url: "syringe.png",
+//             origin: new naver.maps.Point(0, 0),
+//             anchor: new naver.maps.Point(11, 35)
+//         }
+//     });
+//     let infowindow = new naver.maps.InfoWindow({
+//         content: `<div class="infoWindow"><b>${element[0].centerName}</b>`
+//         + `<br><span class="org">${element[0].org}<span>` 
+//         + `<br><hr><span class="address"> ${element[0].address} <span> `
+//         + `<br><span class="address">${element[0].facilityName}<span></div>`,
+
+//         backgroundColor: "#eee",
+//         borderColor: "cadetblue",
+//         borderWidth: 2,
+//         anchorSize: new naver.maps.Size(30, 10),
+//         anchorColor: "#eee",
+//         pixelOffset: new naver.maps.Point(50, -10)
+//     });
+
+//     naver.maps.Event.addListener(marker, "click", function(e) {
+//         if(infowindow.getMap()) infowindow.close();
+//         else infowindow.open(map, marker);
+//     })
+// }
 

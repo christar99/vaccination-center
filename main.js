@@ -135,35 +135,3 @@ function getClickHandler(markerList, infoWindowList, seq) {
 }
 
 getCenterList();
-
-// function createMarker(element) {
-//     console.log(element[0]);
-//     let marker = new naver.maps.Marker({
-//         position: new naver.maps.LatLng(element[0].lng, element[0].lat),
-//         map: map,
-//         icon: {
-//             url: "syringe.png",
-//             origin: new naver.maps.Point(0, 0),
-//             anchor: new naver.maps.Point(11, 35)
-//         }
-//     });
-//     let infowindow = new naver.maps.InfoWindow({
-//         content: `<div class="infoWindow"><b>${element[0].centerName}</b>`
-//         + `<br><span class="org">${element[0].org}<span>` 
-//         + `<br><hr><span class="address"> ${element[0].address} <span> `
-//         + `<br><span class="address">${element[0].facilityName}<span></div>`,
-
-//         backgroundColor: "#eee",
-//         borderColor: "cadetblue",
-//         borderWidth: 2,
-//         anchorSize: new naver.maps.Size(30, 10),
-//         anchorColor: "#eee",
-//         pixelOffset: new naver.maps.Point(50, -10)
-//     });
-
-//     naver.maps.Event.addListener(marker, "click", function(e) {
-//         if(infowindow.getMap()) infowindow.close();
-//         else infowindow.open(map, marker);
-//     })
-// }
-
